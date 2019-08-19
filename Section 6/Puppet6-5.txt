@@ -1,0 +1,47 @@
+-- Roles are simply collections of profiles that 
+-- provide a sensible mapping between human logic 
+-- technology logic. Roles may look something like:
+
+class role { 
+  include profile::base
+}
+
+class role::www inherits role { 
+  # All WWW servers get tomcat
+  include profile::tomcat
+}
+
+class role::www::dev inherits role::www { 
+  include profile::webserver::dev
+  include profile::database
+}
+
+class role::www::live inherits role::www { 
+  include profile::webserver::live
+}
+
+class role::mailserver inherits role { 
+  include profile::mailserver
+}
+
+class role { 
+  include profile::base
+}
+ 
+class role::www inherits role { 
+  # All WWW servers get tomcat
+  include profile::tomcat
+}
+ 
+class role::www::dev inherits role::www { 
+  include profile::webserver::dev
+  include profile::database
+}
+ 
+class role::www::live inherits role::www { 
+  include profile::webserver::live
+}
+ 
+class role::mailserver inherits role { 
+  include profile::mailserver
+}

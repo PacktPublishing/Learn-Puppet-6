@@ -1,0 +1,31 @@
+-- Declare a Class
+class apache::proxy {
+file { '/etc/httpd/conf/mods-enabled/proxy.conf':
+source => "puppet:///modules/apache/proxy.conf"
+}
+
+-- Below will throw an error
+class myapp {
+include apache::proxy
+file { '/etc/httpd/conf/mods-enabled/proxy.conf':
+source => "puppet:///services/myapp/proxy.conf"
+}
+
+-- You can override resources with class inheritance 
+-- by creating a subclass that inherits resources from the parent class.
+class myapp::apache inherits apache::proxy {
+file { '/etc/httpd/conf/mods-enabled/proxy.conf':
+source => "puppet:///services/myapp/proxy.conf"
+}
+
+-- parameterised class
+class apache::proxy (var1, var2) {
+file { '/etc/httpd/conf/mods-enabled/proxy.conf':
+source => "puppet:///modules/apache/proxy.conf"
+}
+
+-- Calling the above
+class { 'apache::proxy':
+    var1    => 'param1',
+    var2    => 'param2';
+}

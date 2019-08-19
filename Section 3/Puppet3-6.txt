@@ -1,0 +1,13 @@
+# epp(<FILE REFERENCE>, [<PARAMETER HASH>])
+file { '/etc/ntp.conf':
+  ensure  => file,
+  content => epp('ntp/ntp.conf.epp', {'service_name' => 'xntpd', 'iburst_enable' => true}),
+  # Loads /etc/puppetlabs/code/environments/production/modules/ntp/templates/ntp.conf.epp
+}
+
+# template(<FILE REFERENCE>, [<ADDITIONAL FILES>, ...])
+file { '/etc/ntp.conf':
+  ensure  => file,
+  content => template('ntp/ntp.conf.erb'),
+  # Loads /etc/puppetlabs/code/environments/production/modules/ntp/templates/ntp.conf.erb
+}

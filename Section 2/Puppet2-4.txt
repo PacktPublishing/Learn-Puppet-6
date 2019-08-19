@@ -1,0 +1,95 @@
+
+
+
+
+
+
+
+# <ENVIRONMENT>/hiera.yaml
+---
+version: 5
+
+defaults:  # Used for any hierarchy level that omits these keys.
+  datadir: data  # This path is relative to the environment -- <ENVIRONMENT>/data
+  data_hash: yaml_data  # Use the built-in YAML backend.
+
+hierarchy:
+  - name: "Per-node data"                   # Human-readable name.
+    path: "nodes/%{trusted.certname}.yaml"  # File path, relative to datadir.
+                                   # ^^^ IMPORTANT: include the file extension!
+
+  - name: "Per-OS defaults"
+    path: "os/%{facts.os.family}.yaml"
+
+  - name: "Common data"
+    path: "common.yaml"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# /etc/puppetlabs/code/environments/production/modules/profile/manifests/hiera_test.pp
+class profile::hiera_test (
+  Boolean             $ssl,
+  Boolean             $backups_enabled,
+  Optional[String[1]] $site_alias = undef,
+) {
+  file { '/tmp/hiera_test.txt':
+    ensure  => file,
+    content => @("END"),
+               Data from profile::hiera_test
+               -----
+               profile::hiera_test::ssl: ${ssl}
+               profile::hiera_test::backups_enabled: ${backups_enabled}
+               profile::hiera_test::site_alias: ${site_alias}
+               |END
+    owner   => root,
+    mode    => '0644',
+  }
+}
+
+# /etc/puppetlabs/code/environments/production/data/common.yaml
+---
+profile::hiera_test::ssl: false
+profile::hiera_test::backups_enabled: false
+
+# /etc/puppetlabs/code/environments/production/data/nodes/
+   jenkins-prod-03.example.com.yaml
+---
+profile::hiera_test::ssl: false
+profile::hiera_test::site_alias: ci.example.com
+
+Data from profile::hiera_test
+-----
+profile::hiera_test::ssl: false
+profile::hiera_test::backups_enabled: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

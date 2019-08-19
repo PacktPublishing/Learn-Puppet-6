@@ -1,0 +1,13 @@
+# Matching resource types 
+defined("file") 
+defined("customtype")  
+
+# Matching defines and classes 
+defined("testing") 
+defined("testing::java")  
+
+# Matching variables 
+defined('$name')  
+
+# Matching declared resources 
+defined(File['/tmp/file']) 

@@ -1,0 +1,10 @@
+# module_name/lib/facter/master_hash.rb
+require 'json'
+Facter.add(:master_hash) do
+  setcode do
+    # return content of foo as a string
+    f = File.read('/path/to/some_file.json')
+    master_hash = JSON.parse(f)
+    master_hash
+  end
+end

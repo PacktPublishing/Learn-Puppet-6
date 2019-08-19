@@ -1,0 +1,22 @@
+-- Step 1: On the agent machine, we need to create a directory 
+$ mkdir -p /etc/facter/facts.d
+
+-- Step 2: Create a Shell script in the directory 
+-- with the following content.
+$ ls -l /etc/facter/facts.d 
+total 4 
+-rwxrwxrwx. 1 root root 65 Sep 18 13:11 external-factstest.sh 
+$ cat /etc/facter/facts.d/external-factstest.sh 
+#!/bin/bash 
+echo "hostgroup = dev" 
+echo "environment = development"
+
+-- Step 3: Change the permission of the script file.
+$ chmod u+x /etc/facter/facts.d/external-facts.sh
+
+-- Step 4: Once done, we can now see the variable present 
+-- with the key/value pair.
+$ facter hostgroup 
+dev 
+$ facter environment 
+development 

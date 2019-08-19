@@ -1,0 +1,27 @@
+-- Curl utility can be used as a basic utility to rest RESTful API connectivity. 
+curl --cert /etc/puppet/ssl/certs/brcleprod001.pem --key 
+   /etc/puppet/ssl/private_keys/brcleprod001.pem
+   
+-- In the following set of commands we are just setting the SSL certificate.
+curl --insecure -H 'Accept: yaml' 
+https://brcleprod002:8140/production/catalog/brcleprod001 
+
+-- Output
+--- &id001 !ruby/object:Puppet::Resource::Catalog 
+aliases: {} 
+applying: false 
+classes: [] 
+...
+
+-- we want to get the CA certificate back from Puppet master.
+curl --insecure -H 'Accept: s' https://brcleprod001:8140/production/certificate/ca  
+
+-- OR
+GET /certificate/{ca, other}  
+
+curl -k -H "Accept: s" https://brcelprod001:8140/production/certificate/ca 
+curl -k -H "Accept: s" https://brcleprod002:8139/production/certificate/brcleprod002 
+
+
+   
+   

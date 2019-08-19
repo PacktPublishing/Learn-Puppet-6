@@ -1,0 +1,10 @@
+if ($OperatingSystem == "Linux") { 
+   $message = "This machine OS is of the type $OperatingSystem \n" 
+} else { 
+   $message = "This machine is unknown \n" 
+} 
+
+file { "/tmp/machineOperatingSystem.txt": 
+   ensure => file, 
+   content => "$message" 
+}

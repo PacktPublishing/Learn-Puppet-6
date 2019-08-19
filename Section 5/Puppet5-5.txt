@@ -1,0 +1,28 @@
+﻿--Puppet Master API REST Reference
+--Authenticated Resources (Valid, signed certificate required).
+
+--Catalogs
+--GET /{environment}/catalog/{node certificate name} 
+curl -k -H "Accept: pson" https://brcelprod001:8140/production/catalog/myclient
+
+--Certificate Revocation List
+--GET /certificate_revocation_list/ca 
+curl -k -H "Accept: s" https://brcleprod001:8140/production/certificate/ca 
+
+--Certificate Request
+--GET /{environment}/certificate_requests/{anything} 
+--GET /{environment}/certificate_request/{node certificate name}  
+curl -k -H "Accept: yaml" https://brcelprod001:8140/production/certificate_requests/all 
+curl -k -H "Accept: yaml" https://brcleprod001:8140/production/certificate_request/puppetclient 
+
+--Reports – Submit a Report
+--PUT /{environment}/report/{node certificate name}  
+curl -k -X PUT -H "Content-Type: text/yaml" -d "{key:value}" https://brcleprod002:8139/production
+
+--Node - Facts Regarding a Specific Node
+--GET /{environment}/node/{node certificate name}  
+curl -k -H "Accept: yaml" https://brcleprod002:8140/production/node/puppetclient 
+
+--Status: Used for Testing
+--GET /{environment}/status/{anything}  
+curl -k -H "Accept: pson" https://brcleprod002:8140/production/certificate_request/puppetclient

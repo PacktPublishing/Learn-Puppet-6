@@ -1,0 +1,12 @@
+node default {
+    include puppet
+}
+node production inherits default {
+}
+node dev {
+    class {'puppet':
+        my_environment => 'dev'
+    }
+}
+node /.*dev.example.com$/ inherits dev {}
+node "test.example.com" inherits dev {}

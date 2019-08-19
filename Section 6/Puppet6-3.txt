@@ -1,0 +1,25 @@
+-- The below is a ruby file that exists in 
+-- a lib/facter/ directory of puppet module
+
+require 'facter'
+Facter.add("rootfs_type", :timeout => 120) do
+   confine :osfamily => "Debian"
+   setcode do
+     dfoutput = Facter::Util::Resolution.exec('df -Tl /')
+     rootfs_type = dfoutput.split(/\n+/)[1].split(" ")[1]
+     rootfs_type
+   end
+ end
+ 
+ -- Call the above fact in any 'ol module
+ if $::rootfs_type == 'btrfs' {
+      cron {
+        'btrfs-balance':
+          ensure   => present,
+          command  => '/sbin/btrfs fi balance start -dusage=5 /',
+          user     => 'root',
+          hour     => '0',
+          minute   => '0',
+          monthday => '1',
+     }
+   }
