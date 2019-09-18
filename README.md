@@ -25,8 +25,6 @@ For successful completion of this course, students will require the computer sys
 ●	An Amazon Web Services Account (Free account will do) <br/>
 ●	PuTTY (www.putty.com) <br/>
 
-<br/>
-
 ### Recommended Hardware Requirements:<br/>
 For an optimal experience with hands-on labs and other practical activities, we recommend the following configuration:
 <br/>
