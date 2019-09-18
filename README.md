@@ -21,17 +21,17 @@ By the end of this course, you will have gained the skills you need to manage yo
 
 ### Technical Requirements
 For successful completion of this course, students will require the computer systems with at least the following:<br/>
-●	Puppet 6<br/>
-●	Hiera<br/>
-●	A code editor<br/>
-●	Windows Powershell
+●	An editor like Notepad+ or Visual Studio <br/>
+●	An Amazon Web Services Account (Free account will do) <br/>
+●	PuTTY (www.putty.com) <br/>
+
 <br/>
 
 ### Recommended Hardware Requirements:<br/>
 For an optimal experience with hands-on labs and other practical activities, we recommend the following configuration:
 <br/>
 ●	OS: Windows 10 <br/>
-●	Processor: Dual Core 2.7 Ghz<br/>
+●	Processor: Dual Core 3.0 Ghz<br/>
 ●	Memory: 4GB<br/>
 ●	Hard Disk Space: 200MB
 
