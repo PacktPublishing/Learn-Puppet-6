@@ -39,3 +39,7 @@ For an optimal experience with hands-on labs and other practical activities, we 
 * [Puppet 5 - The Complete Beginner's Guide [Video]](https://www.packtpub.com/networking-and-servers/puppet-5-the-complete-beginners-guide-video)
 
 * [Puppet Essentials for Beginners [Video]](https://www.packtpub.com/hardware-and-creative/puppet-essentials-beginners-video)
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781838642440">https://packt.link/free-ebook/9781838642440 </a> </p>
